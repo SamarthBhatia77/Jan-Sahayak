@@ -1,6 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { HiDocumentText, HiMicrophone, HiTarget, HiBolt, HiShieldCheck, HiSignal } from 'react-icons/hi2';
+import { IoDocumentTextOutline } from 'react-icons/io5';
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -17,7 +21,7 @@ export default function Home() {
       id: 1,
       title: "Zero-Entry Multimodal Onboarding",
       subtitle: "Document Upload Intelligence",
-      description: "Simply upload a photo of your ID. Our AI extracts age, gender, location, income, and category instantly—no forms, no hassle.",
+      description: "Simply upload a photo of your ID. Our AI extracts age, gender, location, income, and category instantly, no forms, no hassle.",
       icon: "📋",
       rotation: -2,
       color: "bg-[#E8DCC4]"
@@ -26,7 +30,7 @@ export default function Home() {
       id: 2,
       title: "Vernacular Voice Interface",
       subtitle: "Bhasha-First Communication",
-      description: "Speak in any of 22+ Indian languages. Our voice-bot understands intent, not just keywords—bridging the literacy gap.",
+      description: "Speak in any of 22+ Indian languages. Our voice-bot understands intent, not just keywords, bridging the literacy gap.",
       icon: "🗣️",
       rotation: 1.5,
       color: "bg-[#D4C5A9]"
@@ -44,7 +48,7 @@ export default function Home() {
       id: 4,
       title: "The 'Action' Agent",
       subtitle: "Pre-filled Applications",
-      description: "From information to action in seconds. Get pre-filled PDFs and document checklists—ready to submit.",
+      description: "From information to action in seconds. Get pre-filled PDFs and document checklists, ready to submit.",
       icon: "⚡",
       rotation: 2,
       color: "bg-[#E0D5C7]"
@@ -94,18 +98,18 @@ export default function Home() {
             </p>
           </div>
         </div>
+        <Link href='/policy-analyzer'>
         <button className="px-6 py-2.5 bg-[#8B7355] text-[#F5EFE6] font-semibold tracking-wide uppercase text-sm hover:bg-[#6D5A42] transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-0.5"
                 style={{ fontFamily: 'Georgia, serif' }}>
           Get Started →
         </button>
+        </Link>
       </nav>
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 relative">
-            
-            
             <div className="inline-block mb-6 px-6 py-2 bg-[#8B7355]/10 border-l-4 border-[#8B7355] backdrop-blur-sm">
               <p className="text-sm uppercase tracking-[0.3em] text-[#8B7355] font-bold" style={{ fontFamily: 'Courier New, monospace' }}>
                 Official Notice • भारत सरकार
@@ -147,7 +151,13 @@ export default function Home() {
           </div>
 
           {/* Mission Statement Box */}
-          <div className="max-w-4xl mx-auto bg-white p-12 shadow-2xl border-t-8 border-[#8B7355] relative">
+          <motion.div 
+            className="max-w-4xl mx-auto bg-white p-12 shadow-2xl border-t-8 border-[#8B7355] relative"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.21, 0.45, 0.27, 0.9] }}
+          >
             <div className="absolute -top-4 left-8 bg-[#8B7355] text-white px-4 py-1 text-xs uppercase tracking-widest font-bold"
                  style={{ fontFamily: 'Courier New, monospace' }}>
               Resolution No. 2025/AI/001
@@ -158,24 +168,30 @@ export default function Home() {
                 <span className="text-5xl float-left mr-4 mt-1 leading-none text-[#8B7355]">"</span>
                 Every citizen deserves access to the schemes designed for their welfare. 
                 Jan-Sahayak leverages cutting-edge AI to bridge the gap between government programs 
-                and the people they're meant to serve—regardless of literacy, language, or location.
+                and the people they're meant to serve, regardless of literacy, language, or location.
               </p>
               <p className="text-right text-[#8B7355] font-semibold text-sm uppercase tracking-wider mt-8" 
                  style={{ fontFamily: 'Courier New, monospace' }}>
-                Empowering Bharat Through Technology
+                — Empowering Bharat Through Technology
               </p>
             </div>
 
             {/* Paper clip decoration */}
             <div className="absolute -top-3 right-12 w-16 h-8 border-2 border-[#8B7355]/40 rounded-full rotate-45" />
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Features Section - Parliamentary Bills Style */}
-      <section className="relative pb-24 py-5 px-8 bg-gradient-to-b from-[#F5EFE6] to-[#E8DCC4]">
+      <section className="relative py-24 px-8 bg-gradient-to-b from-[#F5EFE6] to-[#E8DCC4]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <motion.div 
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.21, 0.45, 0.27, 0.9] }}
+          >
             <div className="inline-block mb-4 px-8 py-3 bg-[#8B7355] text-white">
               <p className="text-sm uppercase tracking-[0.4em] font-bold" style={{ fontFamily: 'Courier New, monospace' }}>
                 Features & Capabilities
@@ -188,16 +204,21 @@ export default function Home() {
             <p className="text-xl text-[#8B7355]" style={{ fontFamily: 'Georgia, serif' }}>
               Powered by Advanced AI • Built for Every Citizen
             </p>
-          </div>
+          </motion.div>
 
           {/* Feature Bills Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
             {features.map((feature, index) => (
-              <div
+              <motion.div
                 key={feature.id}
                 className="relative group cursor-pointer"
-                style={{
-                  animation: `fadeInUp 0.6s ease-out ${index * 0.1}s backwards`
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  ease: [0.21, 0.45, 0.27, 0.9]
                 }}
                 onMouseEnter={() => setActiveFeature(feature.id)}
                 onMouseLeave={() => setActiveFeature(null)}
@@ -224,8 +245,6 @@ export default function Home() {
                     {feature.id}
                   </div>
 
-                  
-
                   {/* Content */}
                   <div className="relative z-10">
                     <div className="text-5xl mb-4">{feature.icon}</div>
@@ -245,9 +264,6 @@ export default function Home() {
                        style={{ fontFamily: 'Georgia, serif' }}>
                       {feature.description}
                     </p>
-
-                    {/* Official stamp on hover */}
-                    
                   </div>
 
                   {/* Paper fold effect */}
@@ -261,7 +277,7 @@ export default function Home() {
                          ? 'translateY(4px) scale(0.95)' 
                          : `translateY(2px) rotate(${feature.rotation}deg)`
                      }} />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -275,43 +291,50 @@ export default function Home() {
              }} />
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30">
-            <p className="text-sm uppercase tracking-[0.3em] font-bold" style={{ fontFamily: 'Courier New, monospace' }}>
-              Be part of the Movement
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.21, 0.45, 0.27, 0.9] }}
+          >
+            <div className="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/30">
+              <p className="text-sm uppercase tracking-[0.3em] font-bold" style={{ fontFamily: 'Courier New, monospace' }}>
+                Join the Movement
+              </p>
+            </div>
+
+            <h3 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" 
+                style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>
+              Your Rights.<br />Your Schemes.<br />Your Language.
+            </h3>
+
+            <p className="text-xl mb-10 opacity-90 leading-relaxed" style={{ fontFamily: 'Georgia, serif' }}>
+              Break free from forms and bureaucracy. Access what's rightfully yours—starting today.
             </p>
-          </div>
 
-          <h3 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" 
-              style={{ fontFamily: 'Playfair Display, Georgia, serif' }}>
-            Your Rights.<br />Your Schemes.<br />Your Language.
-          </h3>
-
-          <p className="text-xl mb-10 opacity-90 leading-relaxed" style={{ fontFamily: 'Georgia, serif' }}>
-            Break free from forms and bureaucracy. Access what's rightfully yours—starting today.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            
-            <button className="px-10 py-4 bg-transparent border-2 border-white text-white font-bold text-lg hover:bg-white hover:text-[#8B7355] transition-all duration-300 shadow-xl uppercase tracking-wide"
-                    style={{ fontFamily: 'Georgia, serif' }}>
-              Start Exploring
-            </button>
-          </div>
-
-          <div className="mt-16 pt-8 border-t border-white/30 flex items-center justify-center gap-8 flex-wrap text-sm opacity-75">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-white rounded-full" />
-              <span style={{ fontFamily: 'Courier New, monospace' }}>Powered by Gemini AI</span>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              
+              <button className="px-10 py-4 bg-transparent border-2 border-white text-white font-bold text-lg hover:bg-white hover:text-[#8B7355] transition-all duration-300 shadow-xl uppercase tracking-wide"
+                      style={{ fontFamily: 'Georgia, serif' }}>
+                Get Started
+              </button>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-white rounded-full" />
-              <span style={{ fontFamily: 'Courier New, monospace' }}>100% Secure</span>
+
+            <div className="mt-16 pt-8 border-t border-white/30 flex items-center justify-center gap-8 flex-wrap text-sm opacity-75">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full" />
+                <span style={{ fontFamily: 'Courier New, monospace' }}>Powered by Gemini AI</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full" />
+                <span style={{ fontFamily: 'Courier New, monospace' }}>100% Secure</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-white rounded-full" />
+                <span style={{ fontFamily: 'Courier New, monospace' }}>Open Source</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-white rounded-full" />
-              <span style={{ fontFamily: 'Courier New, monospace' }}>Open Source</span>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
